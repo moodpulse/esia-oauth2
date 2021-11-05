@@ -391,6 +391,14 @@ class EsiaInformationConnector(object):
         url = '{base}/prns/{oid}/kids?embed=(elements)'.format(
             base=self._rest_base_url, oid=self.oid)
         return self.esia_request(endpoint_url=url, accept_schema=accept_schema)
+    
+    def get_kid_documents(self, kid_oid, accept_schema=None):
+        """
+        Возвращает документы ребенка
+        :rtype: dict
+        """
+        url = f'{base}/prns/{oid}/kids/{kid_oid}/docs?embed=(documents.elements)'
+        return self.esia_request(endpoint_url=url, accept_schema=accept_schema)
 
     def get_person_transport(self, accept_schema=None):
         """
