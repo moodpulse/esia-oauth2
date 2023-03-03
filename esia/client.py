@@ -276,7 +276,7 @@ class EsiaAuth(object):
         :param str token: токен для декодирования
         :rtype: dict
         """
-        return jwt.decode(token, verify=False)
+        return jwt.decode(token, verify=False, options={"verify_signature": False})
 
     @staticmethod
     def _get_user_id(payload):
@@ -301,7 +301,8 @@ class EsiaAuth(object):
             return jwt.decode(
                 token, key=data,
                 audience=self.settings.esia_client_id,
-                issuer=self._ESIA_ISSUER_NAME
+                issuer=self._ESIA_ISSUER_NAME,
+                options={"verify_signature": False}
             )
         except InvalidTokenError as e:
             raise IncorrectMarkerError(e)
