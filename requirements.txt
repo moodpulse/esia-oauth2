@@ -1,5 +1,5 @@
 cryptography==3.3.2
-PyJWT==1.4.2
+PyJWT==1.7.1
 pytz==2016.4
 requests==2.21.0
 # latest version m2crypto with alter digest alogorithms support for SMIME
